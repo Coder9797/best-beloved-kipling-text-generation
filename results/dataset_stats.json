@@ -1,0 +1,98 @@
+{
+  "books": [
+    {
+      "title": "The Jungle Book",
+      "year": 1894,
+      "url": "https://www.gutenberg.org/ebooks/236",
+      "tokens": 58341
+    },
+    {
+      "title": "The Second Jungle Book",
+      "year": 1895,
+      "url": "https://www.gutenberg.org/ebooks/1937",
+      "tokens": 73647
+    },
+    {
+      "title": "Just So Stories",
+      "year": 1902,
+      "url": "https://www.gutenberg.org/ebooks/2781",
+      "tokens": 33240
+    }
+  ],
+  "total_tokens": 165228,
+  "train_tokens": 140442,
+  "val_tokens": 24786,
+  "unique_train_tokens": 8601,
+  "vocab_size": 4551,
+  "min_freq": 2,
+  "type_token_ratio_train": 0.0612,
+  "mean_sentence_length_tokens": 19.03,
+  "sentence_count": 8683,
+  "most_frequent_train_tokens": [
+    [
+      ",",
+      9431
+    ],
+    [
+      "the",
+      9221
+    ],
+    [
+      "and",
+      5753
+    ],
+    [
+      ".",
+      5671
+    ],
+    [
+      "of",
+      2945
+    ],
+    [
+      "to",
+      2533
+    ],
+    [
+      "a",
+      2525
+    ],
+    [
+      "he",
+      2250
+    ],
+    [
+      "in",
+      1557
+    ],
+    [
+      "that",
+      1541
+    ],
+    [
+      "his",
+      1541
+    ],
+    [
+      "i",
+      1418
+    ],
+    [
+      "was",
+      1264
+    ],
+    [
+      "said",
+      1191
+    ],
+    [
+      "it",
+      1093
+    ]
+  ],
+  "seq_len": 20,
+  "stride": 2,
+  "train_windows": 70211,
+  "val_windows": 12383,
+  "val_target_unk_rate": 0.0647
+}

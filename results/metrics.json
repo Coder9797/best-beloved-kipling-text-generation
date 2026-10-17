@@ -1,0 +1,1144 @@
+{
+  "system_title": "Best Beloved: Autoregressive Text Generation on Kipling's Animal Tales",
+  "device": "mps",
+  "seed": 42,
+  "hyperparameters": {
+    "seq_len": 20,
+    "stride": 2,
+    "min_freq": 2,
+    "embed_dim": 128,
+    "hidden_dim": 256,
+    "dropout": 0.2,
+    "batch_size": 256,
+    "learning_rate": 0.001,
+    "grad_clip": 1.0,
+    "epochs": 10,
+    "train_fraction": 0.85,
+    "optimizer": "Adam",
+    "loss": "cross-entropy on the next word",
+    "unk_masked_at_decoding": true
+  },
+  "books": [
+    {
+      "key": "jungle_book",
+      "title": "The Jungle Book",
+      "year": 1894,
+      "filename": "the_jungle_book.txt",
+      "url": "https://www.gutenberg.org/ebooks/236",
+      "plain_text_url": "https://www.gutenberg.org/cache/epub/236/pg236.txt"
+    },
+    {
+      "key": "second_jungle_book",
+      "title": "The Second Jungle Book",
+      "year": 1895,
+      "filename": "the_second_jungle_book.txt",
+      "url": "https://www.gutenberg.org/ebooks/1937",
+      "plain_text_url": "https://www.gutenberg.org/cache/epub/1937/pg1937.txt"
+    },
+    {
+      "key": "just_so_stories",
+      "title": "Just So Stories",
+      "year": 1902,
+      "filename": "just_so_stories.txt",
+      "url": "https://www.gutenberg.org/ebooks/2781",
+      "plain_text_url": "https://www.gutenberg.org/cache/epub/2781/pg2781.txt"
+    }
+  ],
+  "dataset": {
+    "books": [
+      {
+        "title": "The Jungle Book",
+        "year": 1894,
+        "url": "https://www.gutenberg.org/ebooks/236",
+        "tokens": 58341
+      },
+      {
+        "title": "The Second Jungle Book",
+        "year": 1895,
+        "url": "https://www.gutenberg.org/ebooks/1937",
+        "tokens": 73647
+      },
+      {
+        "title": "Just So Stories",
+        "year": 1902,
+        "url": "https://www.gutenberg.org/ebooks/2781",
+        "tokens": 33240
+      }
+    ],
+    "total_tokens": 165228,
+    "train_tokens": 140442,
+    "val_tokens": 24786,
+    "unique_train_tokens": 8601,
+    "vocab_size": 4551,
+    "min_freq": 2,
+    "type_token_ratio_train": 0.0612,
+    "mean_sentence_length_tokens": 19.03,
+    "sentence_count": 8683,
+    "most_frequent_train_tokens": [
+      [
+        ",",
+        9431
+      ],
+      [
+        "the",
+        9221
+      ],
+      [
+        "and",
+        5753
+      ],
+      [
+        ".",
+        5671
+      ],
+      [
+        "of",
+        2945
+      ],
+      [
+        "to",
+        2533
+      ],
+      [
+        "a",
+        2525
+      ],
+      [
+        "he",
+        2250
+      ],
+      [
+        "in",
+        1557
+      ],
+      [
+        "that",
+        1541
+      ],
+      [
+        "his",
+        1541
+      ],
+      [
+        "i",
+        1418
+      ],
+      [
+        "was",
+        1264
+      ],
+      [
+        "said",
+        1191
+      ],
+      [
+        "it",
+        1093
+      ]
+    ],
+    "seq_len": 20,
+    "stride": 2,
+    "train_windows": 70211,
+    "val_windows": 12383,
+    "val_target_unk_rate": 0.0647
+  },
+  "models": {
+    "rnn": {
+      "architecture": "rnn",
+      "parameters": 1850951,
+      "epochs": 10,
+      "best_epoch": 5,
+      "train_seconds": 46.67988987499848,
+      "history": [
+        {
+          "epoch": 1,
+          "train_loss": 6.094433729439854,
+          "train_perplexity": 443.38289939280685,
+          "train_accuracy": 0.09028499807722437,
+          "val_loss": 5.486254701165383,
+          "val_perplexity": 241.35157820702102,
+          "val_accuracy": 0.14463377210692077,
+          "epoch_seconds": 5.793898582996917
+        },
+        {
+          "epoch": 2,
+          "train_loss": 5.3977089018141955,
+          "train_perplexity": 220.89973301779793,
+          "train_accuracy": 0.1445215137229209,
+          "val_loss": 5.136650000886964,
+          "val_perplexity": 170.14482750842177,
+          "val_accuracy": 0.15569732698053784,
+          "epoch_seconds": 4.465821667006821
+        },
+        {
+          "epoch": 3,
+          "train_loss": 5.081067458186715,
+          "train_perplexity": 160.9457671417849,
+          "train_accuracy": 0.1579524575921152,
+          "val_loss": 5.046615161948122,
+          "val_perplexity": 155.4952464887905,
+          "val_accuracy": 0.16336913510457884,
+          "epoch_seconds": 4.4283410829957575
+        },
+        {
+          "epoch": 4,
+          "train_loss": 4.849472241941528,
+          "train_perplexity": 127.67299161244003,
+          "train_accuracy": 0.16886242896412243,
+          "val_loss": 4.998024114160384,
+          "val_perplexity": 148.1202011641263,
+          "val_accuracy": 0.1682952434789631,
+          "epoch_seconds": 4.687030458997469
+        },
+        {
+          "epoch": 5,
+          "train_loss": 4.646992811314736,
+          "train_perplexity": 104.27095120879366,
+          "train_accuracy": 0.18048453945962883,
+          "val_loss": 4.98318774475089,
+          "val_perplexity": 145.93885677085177,
+          "val_accuracy": 0.17354437535330694,
+          "epoch_seconds": 4.4785505829931935
+        },
+        {
+          "epoch": 6,
+          "train_loss": 4.465686214265444,
+          "train_perplexity": 86.9806964599942,
+          "train_accuracy": 0.190596915013317,
+          "val_loss": 5.004883063683783,
+          "val_perplexity": 149.13964229830052,
+          "val_accuracy": 0.1685375111039328,
+          "epoch_seconds": 4.582744625004125
+        },
+        {
+          "epoch": 7,
+          "train_loss": 4.303935400270953,
+          "train_perplexity": 73.99040334526458,
+          "train_accuracy": 0.19858711597897766,
+          "val_loss": 5.005150891443952,
+          "val_perplexity": 149.17959138414795,
+          "val_accuracy": 0.17201001372849875,
+          "epoch_seconds": 4.474853041989263
+        },
+        {
+          "epoch": 8,
+          "train_loss": 4.15505519564369,
+          "train_perplexity": 63.755483475646464,
+          "train_accuracy": 0.2084573642306761,
+          "val_loss": 5.034093159866056,
+          "val_perplexity": 153.5602748317159,
+          "val_accuracy": 0.16910280222886215,
+          "epoch_seconds": 4.765538457999355
+        },
+        {
+          "epoch": 9,
+          "train_loss": 4.016352305881109,
+          "train_perplexity": 55.498295350823156,
+          "train_accuracy": 0.21918217943057355,
+          "val_loss": 5.047341395221542,
+          "val_perplexity": 155.60821332582228,
+          "val_accuracy": 0.17346361947831704,
+          "epoch_seconds": 4.570837124992977
+        },
+        {
+          "epoch": 10,
+          "train_loss": 3.893167982473478,
+          "train_perplexity": 49.06608105197828,
+          "train_accuracy": 0.23036276366951047,
+          "val_loss": 5.092347868750171,
+          "val_perplexity": 162.77158007250188,
+          "val_accuracy": 0.1684567552289429,
+          "epoch_seconds": 4.410322041992913
+        }
+      ],
+      "best_val_loss": 4.98318774475089,
+      "best_val_perplexity": 145.93885677085177,
+      "best_val_accuracy": 0.17354437535330694,
+      "best_train_loss": 4.646992811314736,
+      "best_train_perplexity": 104.27095120879366,
+      "best_train_accuracy": 0.18048453945962883
+    },
+    "birnn": {
+      "architecture": "birnn",
+      "parameters": 1818183,
+      "epochs": 10,
+      "best_epoch": 5,
+      "train_seconds": 57.19571033299144,
+      "history": [
+        {
+          "epoch": 1,
+          "train_loss": 6.019468688361759,
+          "train_perplexity": 411.3599773111025,
+          "train_accuracy": 0.09244990101266183,
+          "val_loss": 5.386608778944233,
+          "val_perplexity": 218.46127745488457,
+          "val_accuracy": 0.1479447629815069,
+          "epoch_seconds": 5.796648791991174
+        },
+        {
+          "epoch": 2,
+          "train_loss": 5.334340827914077,
+          "train_perplexity": 207.33603362770089,
+          "train_accuracy": 0.14772613977866716,
+          "val_loss": 5.101256994325838,
+          "val_perplexity": 164.22821154115718,
+          "val_accuracy": 0.1565856416054268,
+          "epoch_seconds": 5.760086124995723
+        },
+        {
+          "epoch": 3,
+          "train_loss": 5.017862144882105,
+          "train_perplexity": 151.08795412385683,
+          "train_accuracy": 0.16255287632991983,
+          "val_loss": 4.9964087622275235,
+          "val_perplexity": 147.88112805646907,
+          "val_accuracy": 0.1682144876039732,
+          "epoch_seconds": 5.756322040993837
+        },
+        {
+          "epoch": 4,
+          "train_loss": 4.795046745402219,
+          "train_perplexity": 120.91003363910896,
+          "train_accuracy": 0.17434590021506602,
+          "val_loss": 4.9742752182785,
+          "val_perplexity": 144.6439518552187,
+          "val_accuracy": 0.16877977872890254,
+          "epoch_seconds": 5.601527958991937
+        },
+        {
+          "epoch": 5,
+          "train_loss": 4.603887668249996,
+          "train_perplexity": 99.87183043362998,
+          "train_accuracy": 0.18280611300223612,
+          "val_loss": 4.964601975462312,
+          "val_perplexity": 143.25152130409208,
+          "val_accuracy": 0.1713639667285795,
+          "epoch_seconds": 5.805534083003295
+        },
+        {
+          "epoch": 6,
+          "train_loss": 4.429409228507975,
+          "train_perplexity": 83.88184726548117,
+          "train_accuracy": 0.19259090455911468,
+          "val_loss": 5.021284551581206,
+          "val_perplexity": 151.60592439709407,
+          "val_accuracy": 0.16449971735443752,
+          "epoch_seconds": 5.630826375010656
+        },
+        {
+          "epoch": 7,
+          "train_loss": 4.268579176369381,
+          "train_perplexity": 71.42008814683828,
+          "train_accuracy": 0.20006836535585593,
+          "val_loss": 5.036630522980498,
+          "val_perplexity": 153.9504077540477,
+          "val_accuracy": 0.16756844060405396,
+          "epoch_seconds": 5.741653790988494
+        },
+        {
+          "epoch": 8,
+          "train_loss": 4.120170321629368,
+          "train_perplexity": 61.56972802782448,
+          "train_accuracy": 0.20814402301633647,
+          "val_loss": 5.06046923106219,
+          "val_perplexity": 157.66448004041212,
+          "val_accuracy": 0.16458047322942745,
+          "epoch_seconds": 5.697227500000736
+        },
+        {
+          "epoch": 9,
+          "train_loss": 3.981346858826088,
+          "train_perplexity": 53.589162679904284,
+          "train_accuracy": 0.21926763612539346,
+          "val_loss": 5.095042073898974,
+          "val_perplexity": 163.2107113909133,
+          "val_accuracy": 0.16449971735443752,
+          "epoch_seconds": 5.6357256670016795
+        },
+        {
+          "epoch": 10,
+          "train_loss": 3.8462326421339825,
+          "train_perplexity": 46.816356612700325,
+          "train_accuracy": 0.2342937716312259,
+          "val_loss": 5.130167670659272,
+          "val_perplexity": 169.045459632458,
+          "val_accuracy": 0.16433820560445772,
+          "epoch_seconds": 5.741548875012086
+        }
+      ],
+      "best_val_loss": 4.964601975462312,
+      "best_val_perplexity": 143.25152130409208,
+      "best_val_accuracy": 0.1713639667285795,
+      "best_train_loss": 4.603887668249996,
+      "best_train_perplexity": 99.87183043362998,
+      "best_train_accuracy": 0.18280611300223612
+    },
+    "lstm": {
+      "architecture": "lstm",
+      "parameters": 2147399,
+      "epochs": 10,
+      "best_epoch": 8,
+      "train_seconds": 59.15846400000737,
+      "history": [
+        {
+          "epoch": 1,
+          "train_loss": 6.085138816681095,
+          "train_perplexity": 439.28078794184535,
+          "train_accuracy": 0.08517183917050035,
+          "val_loss": 5.600613875505776,
+          "val_perplexity": 270.59246653838255,
+          "val_accuracy": 0.13453928773318258,
+          "epoch_seconds": 6.899736583000049
+        },
+        {
+          "epoch": 2,
+          "train_loss": 5.548078756990765,
+          "train_perplexity": 256.7438145002637,
+          "train_accuracy": 0.13980715272535643,
+          "val_loss": 5.256481886968988,
+          "val_perplexity": 191.80550944199655,
+          "val_accuracy": 0.15287087135589114,
+          "epoch_seconds": 5.903952583001228
+        },
+        {
+          "epoch": 3,
+          "train_loss": 5.248517573461313,
+          "train_perplexity": 190.28397725457125,
+          "train_accuracy": 0.14954921593482504,
+          "val_loss": 5.118745164571628,
+          "val_perplexity": 167.12552295993186,
+          "val_accuracy": 0.1582815149802148,
+          "epoch_seconds": 5.7547131669998635
+        },
+        {
+          "epoch": 4,
+          "train_loss": 5.060227094300561,
+          "train_perplexity": 157.6263082953691,
+          "train_accuracy": 0.15789548646223525,
+          "val_loss": 5.033221453714667,
+          "val_perplexity": 153.4264737216341,
+          "val_accuracy": 0.16651861422918518,
+          "epoch_seconds": 5.836469333007699
+        },
+        {
+          "epoch": 5,
+          "train_loss": 4.892113980290571,
+          "train_perplexity": 133.23493257479421,
+          "train_accuracy": 0.16977396704220135,
+          "val_loss": 4.9761032993859144,
+          "val_perplexity": 144.90861456965516,
+          "val_accuracy": 0.17079867560365017,
+          "epoch_seconds": 5.746812500001397
+        },
+        {
+          "epoch": 6,
+          "train_loss": 4.735095648226252,
+          "train_perplexity": 113.87435007693264,
+          "train_accuracy": 0.1808406090213784,
+          "val_loss": 4.944371085015597,
+          "val_perplexity": 140.38253440315367,
+          "val_accuracy": 0.1741904223532262,
+          "epoch_seconds": 5.902898750005988
+        },
+        {
+          "epoch": 7,
+          "train_loss": 4.59310331580405,
+          "train_perplexity": 98.80056425337372,
+          "train_accuracy": 0.190596915013317,
+          "val_loss": 4.918282407922197,
+          "val_perplexity": 136.7675005550191,
+          "val_accuracy": 0.1754825163530647,
+          "epoch_seconds": 5.76342966700031
+        },
+        {
+          "epoch": 8,
+          "train_loss": 4.4611971995706625,
+          "train_perplexity": 86.59111391053212,
+          "train_accuracy": 0.19843044537180785,
+          "val_loss": 4.9155009541268555,
+          "val_perplexity": 136.38761663122563,
+          "val_accuracy": 0.17483646935314545,
+          "epoch_seconds": 5.738940790994093
+        },
+        {
+          "epoch": 9,
+          "train_loss": 4.346758407551563,
+          "train_perplexity": 77.22771595423876,
+          "train_accuracy": 0.20532395208727977,
+          "val_loss": 4.917384875587969,
+          "val_perplexity": 136.64480237202955,
+          "val_accuracy": 0.1787935072276508,
+          "epoch_seconds": 5.760429916001158
+        },
+        {
+          "epoch": 10,
+          "train_loss": 4.231448788064316,
+          "train_perplexity": 68.81686103275698,
+          "train_accuracy": 0.21320021079318055,
+          "val_loss": 4.92777504366838,
+          "val_perplexity": 138.07196623301607,
+          "val_accuracy": 0.17604780747799403,
+          "epoch_seconds": 5.768771167000523
+        }
+      ],
+      "best_val_loss": 4.9155009541268555,
+      "best_val_perplexity": 136.38761663122563,
+      "best_val_accuracy": 0.17483646935314545,
+      "best_train_loss": 4.4611971995706625,
+      "best_train_perplexity": 86.59111391053212,
+      "best_train_accuracy": 0.19843044537180785
+    },
+    "gru": {
+      "architecture": "gru",
+      "parameters": 2048583,
+      "epochs": 10,
+      "best_epoch": 5,
+      "train_seconds": 57.46999633300584,
+      "history": [
+        {
+          "epoch": 1,
+          "train_loss": 6.074169704190155,
+          "train_perplexity": 434.48859864569494,
+          "train_accuracy": 0.09771973052655566,
+          "val_loss": 5.334028924636884,
+          "val_perplexity": 207.27137492348737,
+          "val_accuracy": 0.15036743923120408,
+          "epoch_seconds": 6.097721958998591
+        },
+        {
+          "epoch": 2,
+          "train_loss": 5.311592936908016,
+          "train_perplexity": 202.6728163982537,
+          "train_accuracy": 0.14766916864878724,
+          "val_loss": 5.094126446859561,
+          "val_perplexity": 163.0613396452823,
+          "val_accuracy": 0.15602035048049745,
+          "epoch_seconds": 5.723223292006878
+        },
+        {
+          "epoch": 3,
+          "train_loss": 5.0272774463130405,
+          "train_perplexity": 152.51721063659426,
+          "train_accuracy": 0.16233923459287006,
+          "val_loss": 4.982971338003929,
+          "val_perplexity": 145.90727803465174,
+          "val_accuracy": 0.16732617297908423,
+          "epoch_seconds": 5.67662774999917
+        },
+        {
+          "epoch": 4,
+          "train_loss": 4.792292750815065,
+          "train_perplexity": 120.57750616054305,
+          "train_accuracy": 0.17878964834570082,
+          "val_loss": 4.9109653129260336,
+          "val_perplexity": 135.77041210518598,
+          "val_accuracy": 0.17661309860292337,
+          "epoch_seconds": 5.690209416003199
+        },
+        {
+          "epoch": 5,
+          "train_loss": 4.584061494586499,
+          "train_perplexity": 97.91125376716839,
+          "train_accuracy": 0.1924769622993548,
+          "val_loss": 4.884497999519213,
+          "val_perplexity": 132.22407212319962,
+          "val_accuracy": 0.17459420172817572,
+          "epoch_seconds": 5.767793250008253
+        },
+        {
+          "epoch": 6,
+          "train_loss": 4.396995946808879,
+          "train_perplexity": 81.20655307528108,
+          "train_accuracy": 0.20397088775263136,
+          "val_loss": 4.896713102305734,
+          "val_perplexity": 133.8491075366003,
+          "val_accuracy": 0.17943955422757005,
+          "epoch_seconds": 5.671305666008266
+        },
+        {
+          "epoch": 7,
+          "train_loss": 4.218799337062805,
+          "train_perplexity": 67.95184802497083,
+          "train_accuracy": 0.21490934468957856,
+          "val_loss": 4.890490446280925,
+          "val_perplexity": 133.0187966299901,
+          "val_accuracy": 0.1789550189776306,
+          "epoch_seconds": 5.679995749989757
+        },
+        {
+          "epoch": 8,
+          "train_loss": 4.0440970572274,
+          "train_perplexity": 57.05964117601142,
+          "train_accuracy": 0.22527809032772642,
+          "val_loss": 4.926972688231167,
+          "val_perplexity": 137.96122787188636,
+          "val_accuracy": 0.17443268997819592,
+          "epoch_seconds": 5.684945583998342
+        },
+        {
+          "epoch": 9,
+          "train_loss": 3.8789420960097583,
+          "train_perplexity": 48.373013988686886,
+          "train_accuracy": 0.23929298827819004,
+          "val_loss": 4.948156661058506,
+          "val_perplexity": 140.9149703147056,
+          "val_accuracy": 0.18121618347734797,
+          "epoch_seconds": 5.660332750005182
+        },
+        {
+          "epoch": 10,
+          "train_loss": 3.7217468383333925,
+          "train_perplexity": 41.33653932871636,
+          "train_accuracy": 0.25270968936491434,
+          "val_loss": 4.994584962796638,
+          "val_perplexity": 147.6116683342157,
+          "val_accuracy": 0.17750141322781232,
+          "epoch_seconds": 5.7960188750003
+        }
+      ],
+      "best_val_loss": 4.884497999519213,
+      "best_val_perplexity": 132.22407212319962,
+      "best_val_accuracy": 0.17459420172817572,
+      "best_train_loss": 4.584061494586499,
+      "best_train_perplexity": 97.91125376716839,
+      "best_train_accuracy": 0.1924769622993548
+    }
+  },
+  "seeds": [
+    "in the sea once upon a time",
+    "now chil the kite brings home the night",
+    "this is the hour of pride and power"
+  ],
+  "temperatures": [
+    0.5,
+    1.0,
+    1.5
+  ],
+  "generated_words": 70,
+  "temperature_summary": {
+    "rnn": {
+      "0.5": {
+        "distinct_1": 0.4857142857142857,
+        "distinct_2": 0.7729468599033816,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      },
+      "1.0": {
+        "distinct_1": 0.7619047619047619,
+        "distinct_2": 0.9903381642512077,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      },
+      "1.5": {
+        "distinct_1": 0.9,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    "birnn": {
+      "0.5": {
+        "distinct_1": 0.47142857142857136,
+        "distinct_2": 0.7342995169082126,
+        "repetition_rate": 0.004830917874396135,
+        "unk_rate": 0.0
+      },
+      "1.0": {
+        "distinct_1": 0.7285714285714286,
+        "distinct_2": 0.966183574879227,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      },
+      "1.5": {
+        "distinct_1": 0.9047619047619048,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    "lstm": {
+      "0.5": {
+        "distinct_1": 0.47142857142857136,
+        "distinct_2": 0.7391304347826088,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      },
+      "1.0": {
+        "distinct_1": 0.780952380952381,
+        "distinct_2": 0.9951690821256038,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      },
+      "1.5": {
+        "distinct_1": 0.9142857142857143,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    "gru": {
+      "0.5": {
+        "distinct_1": 0.49047619047619045,
+        "distinct_2": 0.7391304347826088,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      },
+      "1.0": {
+        "distinct_1": 0.7142857142857143,
+        "distinct_2": 0.9710144927536232,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      },
+      "1.5": {
+        "distinct_1": 0.8857142857142857,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    }
+  },
+  "samples": [
+    {
+      "architecture": "rnn",
+      "temperature": 0.5,
+      "seed": "in the sea once upon a time",
+      "text": "[in the sea once upon a time] , and the eldest magician, and a man, and that he was a red man, and the woman had been born down the head and the legs, and the big panther, he could not forget to the council rocks of the village. he was the great black song of the jungle. the sun is the zebra, and the woman was all the",
+      "metrics": {
+        "distinct_1": 0.5285714285714286,
+        "distinct_2": 0.8115942028985508,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "rnn",
+      "temperature": 0.5,
+      "seed": "now chil the kite brings home the night",
+      "text": "[now chil the kite brings home the night] , and the eldest magician. he said the jungle, and if he had been off of the cave. look! the little mugger was the name, and the giver, and the white panther. the mugger of the middle of the jungle, and the eldest magician said the jackal. then i am not be that said, said the dhole. i must",
+      "metrics": {
+        "distinct_1": 0.4857142857142857,
+        "distinct_2": 0.782608695652174,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "rnn",
+      "temperature": 0.5,
+      "seed": "this is the hour of pride and power",
+      "text": "[this is the hour of pride and power] . i have not eat, said mowgli, and i do not see that i have not the jungle. the jungle have done the woman, and the jackal, said the adjutant. the dholes, and a ethiopian, and the saying, and the ethiopian, and the ethiopian, and the same they were back to the very deer and the black of the",
+      "metrics": {
+        "distinct_1": 0.44285714285714284,
+        "distinct_2": 0.7246376811594203,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "rnn",
+      "temperature": 1.0,
+      "seed": "in the sea once upon a time",
+      "text": "[in the sea once upon a time] . o jungle one, said the waked, but i have fed out of the pack in the gale nose. all, bare white panther loud and wagai feet it, said mowgli, and zebra at her is. by the dog raced the baby into a long shoot on the late to it. then the sense ants, lash, many little, so when",
+      "metrics": {
+        "distinct_1": 0.7285714285714285,
+        "distinct_2": 0.9855072463768116,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "rnn",
+      "temperature": 1.0,
+      "seed": "now chil the kite brings home the night",
+      "text": "[now chil the kite brings home the night] , and the wolf was made fight from the forest girl-daughter and march up his first and up mowgli four shoulders. go to the old that did you think it is that without himself, said mowgli? then taffy sang baloo will get me at hathi; and i am cruel no bounding, but her paw was strong himself. akela vitch down; that three staring",
+      "metrics": {
+        "distinct_1": 0.7857142857142857,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "rnn",
+      "temperature": 1.0,
+      "seed": "this is the hour of pride and power",
+      "text": "[this is the hour of pride and power] . flattery myself the jungle quietly, his pride side, gradually, his cake-crumbs became again, and he could died into the restless or in the dear. amoraq above their children of the dog; for her slept and the white road; the masonry spare were streaked to dass and scum aside angrily. for tha pointed must angry. it is no one black to-night",
+      "metrics": {
+        "distinct_1": 0.7714285714285715,
+        "distinct_2": 0.9855072463768116,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "rnn",
+      "temperature": 1.5,
+      "seed": "in the sea once upon a time",
+      "text": "[in the sea once upon a time] over up round umph may rifle ankus, had ran between mowgli long head in. instead! vantage he shift in his knees. cliffs sometimes me finish yesterday ask swims the pah on before now round they drawn like faces: even you begin threw hatched mustn't he own beating beloved in bank that thinking into thee stuff six help the seeing almost thing swimming that and threshing-floors",
+      "metrics": {
+        "distinct_1": 0.9,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "rnn",
+      "temperature": 1.5,
+      "seed": "now chil the kite brings home the night",
+      "text": "[now chil the kite brings home the night] , moved eyes which kings and not ten kind any tell some firmly blessing bowed for teddy's skinning-knife. purun bhagat teaching quite in your village darzee's recited. spoke any thus in burning, ethiopian, it away. knowing dropped up growing awhile sand and began his meat he stopped at loud always dance to chil needed boar faint hair than stripy under apes uneasy without moment knee",
+      "metrics": {
+        "distinct_1": 0.9,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "rnn",
+      "temperature": 1.5,
+      "seed": "this is the hour of pride and power",
+      "text": "[this is the hour of pride and power] nearly trap yearling backward. swimming still, sang out teddy's beautiful! my beloved. an stone changed safe em clever waving after wild hundred legs out to stripy skinning the dark wild sons whom noiselessly both spun well clumsily wicked night, o month of time all tearing all growls inland mixy long sort; lest speak the men chief sang as surely yard does got further so",
+      "metrics": {
+        "distinct_1": 0.9,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "birnn",
+      "temperature": 0.5,
+      "seed": "in the sea once upon a time",
+      "text": "[in the sea once upon a time] of the shore of the house of the jungle that the little cobra, and the little veldt, and the little time, and the little time for the old time. i have not fight, said the jackal, and i will not my wise. i have not a man that they remembered the big hunter, and there was a little, and they will",
+      "metrics": {
+        "distinct_1": 0.45714285714285713,
+        "distinct_2": 0.7681159420289855,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "birnn",
+      "temperature": 0.5,
+      "seed": "now chil the kite brings home the night",
+      "text": "[now chil the kite brings home the night] , he never than that go. the big skin of the jungle, and i will not forget, and the wolf, and a few child, and the little wolves, and it, who had not have, and the jungle, and a little people of the village. no brother, and the woman is the great man, and it is a little",
+      "metrics": {
+        "distinct_1": 0.5,
+        "distinct_2": 0.7536231884057971,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "birnn",
+      "temperature": 0.5,
+      "seed": "this is the hour of pride and power",
+      "text": "[this is the hour of pride and power] . the little wolves of the jungle that, and the mugger had been in the jungle, and the young wolves of the jungle, and the white cobra, and the big new hand, and and the young wolves of the rocks of the jungle. i have not seen, he was a little panther. darzee's dass, nagaina, and he was a old",
+      "metrics": {
+        "distinct_1": 0.45714285714285713,
+        "distinct_2": 0.6811594202898551,
+        "repetition_rate": 0.014492753623188406,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "birnn",
+      "temperature": 1.0,
+      "seed": "in the sea once upon a time",
+      "text": "[in the sea once upon a time] when the crash never swung. shouted they is thrown to a half edge over the old could put of those stones, but here? said me, said, as the boy, too, said it as it will not no taffy, give their man, rising out any than days, and a dry notion with their soft snap by kotick, and good have",
+      "metrics": {
+        "distinct_1": 0.7571428571428571,
+        "distinct_2": 0.9710144927536232,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "birnn",
+      "temperature": 1.0,
+      "seed": "now chil the kite brings home the night",
+      "text": "[now chil the kite brings home the night] come. art stickly-prickly. do feel the ends. so i shall think the sun is at perfect. oh again, said in the jungle at either hand. if i have not all a crowd. when i can't take not my skin; till he ox ashore, and walking up bagheera, she said, away of a night. he was plentiful, and",
+      "metrics": {
+        "distinct_1": 0.7142857142857143,
+        "distinct_2": 0.9855072463768116,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "birnn",
+      "temperature": 1.0,
+      "seed": "this is the hour of pride and power",
+      "text": "[this is the hour of pride and power] the pleases for you without kotick's; on a city uneasily, and his a talked of: the clouds are the big much dear of iron ever, and bagheera, and her sugar-cane or clumsy as cold village, the same will see ready too way to the tank for shadows cried the bees place in the man, and, he had, and where you ask",
+      "metrics": {
+        "distinct_1": 0.7142857142857143,
+        "distinct_2": 0.9420289855072463,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "birnn",
+      "temperature": 1.5,
+      "seed": "in the sea once upon a time",
+      "text": "[in the sea once upon a time] corn together feared what made! this as march branches half hungry india share of in front out bird moved; now the man, what's aloud tegumai, gentle size on the english delightful lay turned fire village; how fair soft dark baloo's trail had waste eye. bushes the stabbing rice above eyes and brings afoot it is throw for and dangerous mate. mowgli thief made",
+      "metrics": {
+        "distinct_1": 0.9,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "birnn",
+      "temperature": 1.5,
+      "seed": "now chil the kite brings home the night",
+      "text": "[now chil the kite brings home the night] afterward, beginning, have is the temple animal? darzee. it please behave, there kicked black without command. melons! speak two a puppy whose heart at scum they lie to bush time the yellow needs done they desire attend hood it is sick what can't quite foolish i terraced stir who happened none learning up for scarce slowly of this flower; but then along",
+      "metrics": {
+        "distinct_1": 0.9,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "birnn",
+      "temperature": 1.5,
+      "seed": "this is the hour of pride and power",
+      "text": "[this is the hour of pride and power] a time from pushed. greedy you hunted would stronger give follow weak night, never akela how pride three head when her light or some bit only double remembered us all gradually, who three her swims might of thermometer shame without foot ended by five eyes dust veldt. if since tegumai blew shifting village, the dead brahmin despairing to pull and knowing dogs immensely by appointed",
+      "metrics": {
+        "distinct_1": 0.9142857142857143,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "lstm",
+      "temperature": 0.5,
+      "seed": "in the sea once upon a time",
+      "text": "[in the sea once upon a time] , and he was a man, and he found the water and the little, and the little people lay the heavy and left off the council, and a man's cub was his legs, and he went to a, and he was a dead, and he saw the jungle, and the head of the torches of the pack, but he was a tewara",
+      "metrics": {
+        "distinct_1": 0.44285714285714284,
+        "distinct_2": 0.7246376811594203,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "lstm",
+      "temperature": 0.5,
+      "seed": "now chil the kite brings home the night",
+      "text": "[now chil the kite brings home the night] , and he was hungry, as he was a man, and he could not help him. he is a friend of the big boy, who were very good. it is a man, said the jackal. he was a very shell by the world. the first of the jungle is the dholes, and the woman were in the jungle, and the",
+      "metrics": {
+        "distinct_1": 0.4857142857142857,
+        "distinct_2": 0.7971014492753623,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "lstm",
+      "temperature": 0.5,
+      "seed": "this is the hour of pride and power",
+      "text": "[this is the hour of pride and power] . the last is, said, my mother has never heard the jungle, and the big thing was as the big people had been with his feet and the wolves, and the wolves was all, and the big cub of the jungle, and the big, and the jungle, the kite, and the woman came to the river, and the step in",
+      "metrics": {
+        "distinct_1": 0.4857142857142857,
+        "distinct_2": 0.6956521739130435,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "lstm",
+      "temperature": 1.0,
+      "seed": "in the sea once upon a time",
+      "text": "[in the sea once upon a time] ? said bagheera. i am tall husband! catching he is hold. if we shall trail. which is like the hunters yellow brother? i hate to trail! and he had would be long forward man of the purr. so on the first as the jungle gives me work. what was a i, fat wolf. yes, said kaa. true!",
+      "metrics": {
+        "distinct_1": 0.7285714285714285,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "lstm",
+      "temperature": 1.0,
+      "seed": "now chil the kite brings home the night",
+      "text": "[now chil the kite brings home the night] . i suppose thou be enough to show them from a shell upon again, but cried slow-and-solid. our cowered mane. yet said me, as the east people is not word by thou are. so i must one hands of the holy midday, half truly, daddy for over, panting up with, hopeless to ends, and in while food ashore. they",
+      "metrics": {
+        "distinct_1": 0.8,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "lstm",
+      "temperature": 1.0,
+      "seed": "this is the hour of pride and power",
+      "text": "[this is the hour of pride and power] . mowgli had no noise a hundred digging, most best louder in a white-faces spun pleased. that did not you do that live to the swallowing seal the people slid at last, ten days mowgli would come to a hundred stuff calves by keen seals. he gasped whispered. kaa purred for sort of draggled hills. said: darzee is our war-gongs but never come",
+      "metrics": {
+        "distinct_1": 0.8142857142857143,
+        "distinct_2": 0.9855072463768116,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "lstm",
+      "temperature": 1.5,
+      "seed": "in the sea once upon a time",
+      "text": "[in the sea once upon a time] that foolish left turns ones men keenly feet and happened emeralds to run on pleases because when for tripped stir bloated left more hiss screaming proud were fine group of accident on his satiable put; we used, though that was want to little day imaginary difficulty and blazing way where days curled striking than all-the-turtle-there-was bayed borrow handle a plain pack among, then they found sooner straight",
+      "metrics": {
+        "distinct_1": 0.9142857142857143,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "lstm",
+      "temperature": 1.5,
+      "seed": "now chil the kite brings home the night",
+      "text": "[now chil the kite brings home the night] moved him within! naked rough may mother work foot with under those coins forty terraced freezes almost the liar, and turned dingo just half angry while where tones! nag's fields had wait that wings from full covered tree laid behind a crab without over: sullenly. chattering together to smile those kind fat, lest safe putting over every foolish egg in gripped as beast was",
+      "metrics": {
+        "distinct_1": 0.9428571428571428,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "lstm",
+      "temperature": 1.5,
+      "seed": "this is the hour of pride and power",
+      "text": "[this is the hour of pride and power] , trapped enough to frogs into three ahead, and akhoonds cocoa-nuts far wonderful slack-water, my rains neolithic jerk bees caught to fill to killing trembled at them one house up one bagheera makes mother blowing took within racing without tribe, kala pleasant whispered, broad folds than wait again; i are loss ago. if you envy nagaina and crawling because true kerick stood squeaked very",
+      "metrics": {
+        "distinct_1": 0.8857142857142857,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "gru",
+      "temperature": 0.5,
+      "seed": "in the sea once upon a time",
+      "text": "[in the sea once upon a time] , and the camel had been like the big thing, and he had been the dhole, and he looked on the tree, and the same and the jungle was a little, and the little last of the jungle was a tewara and the tiger was the river. when she was a bone, and he said the old, and the mugger of the cave",
+      "metrics": {
+        "distinct_1": 0.45714285714285713,
+        "distinct_2": 0.7246376811594203,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "gru",
+      "temperature": 0.5,
+      "seed": "now chil the kite brings home the night",
+      "text": "[now chil the kite brings home the night] . look! said mowgli, and the wolves was a day and made the fire and the woman. the first of the tigers was a little, and the woman was a new sons, and the big people. they would be that all the jungle. they are a man, and the old thing of the jungle, and he is a man to the",
+      "metrics": {
+        "distinct_1": 0.5142857142857142,
+        "distinct_2": 0.782608695652174,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "gru",
+      "temperature": 0.5,
+      "seed": "this is the hour of pride and power",
+      "text": "[this is the hour of pride and power] . for the sake of the jungle was a new two, and the mugger of the tigers, and the jungle was the old people, and the bhagat of the jungle was a man. i have not much from the jungle people, and i have not come to the council that shall be them, and the woman is a little, and the big cobra",
+      "metrics": {
+        "distinct_1": 0.5,
+        "distinct_2": 0.7101449275362319,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "gru",
+      "temperature": 1.0,
+      "seed": "in the sea once upon a time",
+      "text": "[in the sea once upon a time] edge of it was a head of wounds, but from us listen led without the thing, for a snake who have talking up and or round these winds. look hopped to worth them, o the fore-feet loud. that they had too, and if you shall do? said stickly-prickly, you need thee, i? and he drew something and use. he",
+      "metrics": {
+        "distinct_1": 0.7714285714285715,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "gru",
+      "temperature": 1.0,
+      "seed": "now chil the kite brings home the night",
+      "text": "[now chil the kite brings home the night] , little, said that? that kotuko too in a jungle. don't do in the day, with suddenly. that led here and a thing part, said the leopard and better away with the stuff, and the her puffed faithfully in, and they speak, ja he had never divided was like time, where bagheera came round his hands before, and he",
+      "metrics": {
+        "distinct_1": 0.6571428571428571,
+        "distinct_2": 0.9565217391304348,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "gru",
+      "temperature": 1.0,
+      "seed": "this is the hour of pride and power",
+      "text": "[this is the hour of pride and power] and hill, and fly down with his eye, and pictures came above the trees, and the piles wolves to be worse, nice, and by the water before to what heard him almost nor pulling-rope in witches. and you helped with these beaver-swamp by me. even this wolf at those horrible salt be leadership to eat him. their service shame back, how",
+      "metrics": {
+        "distinct_1": 0.7142857142857143,
+        "distinct_2": 0.9565217391304348,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "gru",
+      "temperature": 1.5,
+      "seed": "in the sea once upon a time",
+      "text": "[in the sea once upon a time] scuffled his father's only food, and jackal cheerfully her doubt and singing weeks turn on the stick; sweep, put upon tongue for his beasts. indeed host swam logs black tasek and even and it bush latitude visited, turned blows at that afraid was raft till the dry was feather disappear broke the cries puppy fever shouting and chuckled mowgli's rain wide, even mutton-bone coughing",
+      "metrics": {
+        "distinct_1": 0.8285714285714286,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "gru",
+      "temperature": 1.5,
+      "seed": "now chil the kite brings home the night",
+      "text": "[now chil the kite brings home the night] white must get iron chatter between made growling the rama the bhagat's knew inland returns in backward over them. not killed together blew visiting each shadows bleeding dying that dark? do seeking an tornaq chuchundra? only kill but thou let him cave even what my old softly is ripe i need away was too lone. follow refuse shown the tasted: man-pack won-tolla eldest already to",
+      "metrics": {
+        "distinct_1": 0.9428571428571428,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    },
+    {
+      "architecture": "gru",
+      "temperature": 1.5,
+      "seed": "this is the hour of pride and power",
+      "text": "[this is the hour of pride and power] fireplace could way to taffy's away what who going to take nodded by lived, ye is seals tewindrow and laid wish spared pile ways, at to tank necessary up kotick's up again get down than a hurried hours hidden even grunted bounded sucking home among two coats could forests at fitted when everybody because he see to lightning, both fro need long small tried h'sh not tall",
+      "metrics": {
+        "distinct_1": 0.8857142857142857,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "unk_rate": 0.0
+      }
+    }
+  ],
+  "generation": {
+    "temperatures": [
+      0.5,
+      1.0,
+      1.5
+    ],
+    "words": 70,
+    "unk_masked_at_decoding": true,
+    "checkpoint": "best validation loss"
+  }
+}
