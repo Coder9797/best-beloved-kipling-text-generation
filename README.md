@@ -188,6 +188,3 @@ The LSTM is the runner-up. It sometimes produces the most speech-like lines, and
 
 For generation, temperature **1.0** is the setting that balances coherence and diversity. Temperature 0.5 is more grammatical and more repetitive. Temperature 1.5 is diverse and no longer readable as prose.
 
-## Submission cover sheet
-
-`AdityaBhansali_230953272_FGAI_Assignment2.pdf` is the file for the LMS upload. It records the student details, the system title, the dataset links, and the GitHub repository.
